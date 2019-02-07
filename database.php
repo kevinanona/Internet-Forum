@@ -1,7 +1,7 @@
 <?php
     $dbhost = "localhost";
-    $dbuser = "S0302093";
-    $dbpass = "Kelloco97";
+    $dbuser = "csforum";
+    $dbpass = "csforum18";
     $dbname = $dbuser;
 
     $dbcon = new mysqli ($dbhost, $dbuser, $dbpass, $dbname);
