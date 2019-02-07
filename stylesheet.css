@@ -1,33 +1,120 @@
 body{
-background-color: #ADD8E6;
+	background-color: #ADD8E6;
 
 }
 table{
 }
-.buttons{
-margin-left: 40px;
+.button{
 }
-.searchBar{
-margin-left: auto;
-margin-right: auto;
+#searchOptions{
+position:absolute;
+top:0px;
+left:0px;
+width:200px; 
+height:27px;
+line-height:20px;
+margin:0;
+padding:0;
 }
+.topMenu{
+	position: relative;
+	text-align: center;
+	border: 10px solid transparent;
+	margin-top: 40px;
+	margin-bottom: 40px;
+	
 
-.button {
-  font: bold 14px Arial;
+}
+.topMenu > div{
+	position: absolute;
+	margin-bottom:5px;
+	border: 10px solid transparent;
+	
+}
+#registerAndLogin{
+	float: left;
+	top: 0;
+	left: 0;
+}
+#searching{
+	float: center;
+	left: 25%;
+	position:relative;
+	width:200px;
+	height:25px;
+	border:0;
+	padding:0;
+	margin:0;
+}
+.searchField{
+position:absolute;
+top:0px;
+left:0px;
+width:183px;
+width:180px\9;#width:180px;
+height:23px; 
+height:21px\9;#height:18px;
+border:1px solid #556;
+}
+#accountIcon{
+	width: 4px;
+	height: 4px;
+	float: right;
+	border-style: solid;
+	top: 0;
+	right: 10;
+}
+#forumsContainer{
+	border-style: solid;
+	border-bottom: 10%;
+	padding-bottom: 800px;
+	left: 0;
+	right: 0;
+}
+#forumsContainer > div{
+	border-style: solid;
+	border-bottom: 20%;
+	margin: 5px;
+}
+.accountIcon{
+	float: right;
+	top: 0;
+	right: 10%;
+  color: white;
+  padding: 0px;
+  font-size: 8px;
+  border: none;
+  cursor: pointer;
+}
+.accountContent{
+	
+	display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+
+}
+.accountContent a{
+	display: none;
+	color: black;
+  padding: 4px 16px;
   text-decoration: none;
-  background-color: #EEEEEE;
-  color: #333333;
-  padding: 2px 6px 2px 6px;
-  border-top: 2px solid #CCCCCC;
-  border-right: 2px solid #333333;
-  border-bottom: 2px solid #333333;
-  border-left: 2px solid #CCCCCC;
+  display: inline;
 }
-.diviser{
-width: auto;
-height: 5px;
-display: inline-block;
-}
-.register{
 
+
+.dropdown {
+  position: relative;
+  display: inline;
+  right: 10%;
 }
+
+.dropdown a:hover {background-color: #ddd;}
+
+.show {display: inline;}
+
+
+

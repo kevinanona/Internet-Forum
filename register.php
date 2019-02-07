@@ -1,4 +1,6 @@
 <?php
+//add passhash material
+//make it so that emails have to have the right syntax
 echo "<!DOCTYPE HTML>";
 echo "<HTML><BODY>";
 require_once "../database.php";
@@ -14,12 +16,9 @@ $_username = dbescape($username);
 $email = $_POST['email'];
 $_email = dbescape($email);
 $password = $_POST['password'];
-$_password = dbescape($password); //dbescape the password for now, in the future change to hashing
+$passhash = passhash($password); //dbescape the password for now, in the future change to hashing
 $date = date();
 
-//First name does not have to be checked, does not need to be unique
-//Last name does not have to be checked as it does not need to be unique
-//username needs to be checked
 $checkUsername = dbquery("SELECT * FROM Users WHERE 'username' = '$username'");
 if($checkUsername->num_rows != 0){
 	die("Username already exists");
@@ -29,17 +28,22 @@ $checkEmail = dbquery("SELECT * FROM Users WHERE 'email' = '$email'");
 if($checkEmail->num_rows != 0){
 	die("There is already an account with this email");
 }
-//need to hash password-----------
 
-
-//end of hash password code-------
 
 //query to insert a new user
 dbquery("INSERT INTO Users SET username = '$_username', firstname = '$_firstname', 
-lastname = '$_lastname', email = '$_email', date = '$date'");
+lastname = '$_lastname', email = '$_email', password = '$passhash'");
 	
-$dbcon -> insert_id;
-$userid =  $dbcon -> insert_id;
+//$dbcon -> insert_id;
+//$userid =  $dbcon -> insert_id;
+$myEmail = "k_elloco@hotmail.com";
+$theurl = "http://weblab.salemstate.edu/~csforum/Forum/verification.php?username=$_username";
+mail($myEmail, "Verification Link", $theurl);
+echo "Please check email for verification link <br>";
+echo "URL: http://weblab.salemstate.edu/~csforum/Forum/login.html";
 }
+
 echo "</BODY></HTML>";
+
+
 ?>
