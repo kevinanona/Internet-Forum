@@ -67,7 +67,7 @@ border:1px solid #556;
 #forumsContainer{
 	border-style: solid;
 	border-bottom: 10%;
-	padding-bottom: 800px;
+	padding-bottom: 600px;
 	left: 0;
 	right: 0;
 }
@@ -75,6 +75,7 @@ border:1px solid #556;
 	border-style: solid;
 	border-bottom: 20%;
 	margin: 5px;
+	padding: 10px;
 }
 .accountIcon{
 	float: right;
