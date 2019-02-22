@@ -1,9 +1,5 @@
-<?php
-session_start();
-?>
 
-<?php
-echo <<<END
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,8 +25,32 @@ window.onclick = function(event) {
   }
 }
 </SCRIPT>
+<script> //testing this script, its supposed to access php file to get forums from database and display it on the page
+          function displayForums() {
+            if (window.XMLHttpRequest) {
+                // code for IE7+, Firefox, Chrome, Opera, Safari
+                xmlhttp = new XMLHttpRequest();
+            } else {
+                // code for IE6, IE5
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xmlhttp.onreadystatechange = function() {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
+                }
+            };
+            xmlhttp.open("GET","displayForums.php",true);
+            xmlhttp.send();
+
+         }
+</script>
 </head>
 <BODY>
+
+<?php
+session_start();
+?>
+
 <DIV class=topMenu>
 
 	<DIV id=logout>
@@ -95,20 +115,10 @@ window.onclick = function(event) {
 	
 </DIV>
 
-<DIV id=forumsContainer>
-	<DIV id=forum1>
-	</DIV>
-	<DIV id=forum2>
-	</DIV>
-	<DIV id=forum3>
-	</DIV>
-	<DIV id=forum4>
-	</DIV>
+<DIV id=txtHint>
 </DIV>
-
-</BODY>
-<HTML>
-END;
+<SCRIPT>displayForums();//script that calls the function to display forums</SCRIPT>
+<?php
 require_once "../database.php";
 
 if(isset($_SESSION['username']) != 0){
@@ -119,3 +129,5 @@ else{
 echo "No username";
 }
 ?>
+</BODY>
+<HTML>
