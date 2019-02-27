@@ -102,32 +102,42 @@ session_start();
   <input name="idValue" id="idValue" type="hidden">
 </div>
 	
+	<DIV style="float: right; top: 0; right: 0;">
+	<nav class=nav>
+		<ul>
+			<li><a href="http://weblab.salemstate.edu/~csforum/Forum/createForum.html">Create Forum</a></li>
+			<li><a>Send Message</a></li>
+			<li><a>View Account</a></li>
+			<li><a>Logout</a></li>
+		</ul>
+	</nav>
+	</DIV>
 	
+	<!--  
 	<div style="top:0;" class="dropdown">
   <IMG style="width:25px;height:25px;float:right;"onclick="myFunction()" class="accountIcon" src="../account.png">
   <div id="myDropdown" class="accountContent">
     <a href="http://weblab.salemstate.edu/~csforum/Forum/createForum.html">Create a Forum</a>
     <a href="#about">Send a message</a>
   </div>
-	</div>
-	
-	
+	</div> -->
 	
 </DIV>
-
-<DIV id=txtHint>
-</DIV>
-<SCRIPT>displayForums();//script that calls the function to display forums</SCRIPT>
 <?php
 require_once "../database.php";
 
 if(isset($_SESSION['username']) != 0){
+echo "Youre logged in as ";
 echo $_SESSION['username'];
 }
 else{
-	
-echo "No username";
+die("You're not Logged in");	
+//echo "No username";
 }
 ?>
+<DIV id=txtHint>
+</DIV>
+<SCRIPT>displayForums();//script that calls the function to display forums</SCRIPT>
+
 </BODY>
 <HTML>
