@@ -90,10 +90,21 @@ function accountInfo(){ //dropdown account options menu
   <input name="idValue" id="idValue" type="hidden">
 </div>
 	
+	<DIV style="float: right; top: 0; right: 0;">
+	<nav class=nav>
+		<ul>
+			<li><a href="http://weblab.salemstate.edu/~csforum/Forum/createForum.html">Create Forum</a></li>
+			<li><a>Send Message</a></li>
+			<li><a>View Account</a></li>
+		</ul>
+	</nav>
+	</DIV>
 	
+	<!--
 	<DIV class=accountIcon>
 	<IMG style="width: 30px;height: 30px;" onmousedown=accountInfo() class=accountIcon src="../account.png">
 	</DIV>
+	-->
 	
 	
 	
@@ -105,13 +116,6 @@ function accountInfo(){ //dropdown account options menu
 <?php
 
 require_once "../database.php";
-
-$query = mysqli_query($dbcon , "SELECT creator_username, f_title, f_text, forum_subject_id, tag FROM Forum ORDER BY f_timestamp DESC");
-$usernameCol = array();
-$titleCol = array();
-$subjectCol = array();
-$tagCol = array();
-$descriptionCol = array();
 
 ?>
 
