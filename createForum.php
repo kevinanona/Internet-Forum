@@ -38,6 +38,8 @@ echo "*D*";
 mysqli_query($dbcon, "INSERT INTO `Forum`(`creator_username`, `f_title`, `f_text`, `forum_subject_id`, `tag`) VALUES ('$username','$_title','$_description','$resultAsString','$_tag')");
 
 echo "*E*";
+header("Location: Loggedin.php");
+exit;
 	
 }
 

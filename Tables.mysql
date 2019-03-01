@@ -37,8 +37,8 @@ FOREIGN KEY (to_username)
 CREATE TABLE Forum
 (f_id INTEGER UNSIGNED AUTO_INCREMENT NOT NULL PRIMARY KEY,
 creator_username VARCHAR(16) NOT NULL,
-f_title VARCHAR(32) NOT NULL,
-f_text VARCHAR(64), # this attribute can be null, forums dont need text, a title is good enough
+f_title VARCHAR(64) NOT NULL,
+f_text VARCHAR(256), # this attribute can be null, forums dont need text, a title is good enough
 f_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 forum_subject_id INTEGER UNSIGNED NOT NULL,
 tag VARCHAR(16),
