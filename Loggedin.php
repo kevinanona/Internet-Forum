@@ -7,6 +7,7 @@
 <SCRIPT type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/F9A769DF-F758-B045-8B15-7B836D5190F2/main.js" charset="UTF-8"></SCRIPT>
 <SCRIPT type="text/javascript">
 
+//not being used anymore, used to be for the dropdown menu which im not using anymore
 function myFunction() {
   document.getElementById("myDropdown").classList.toggle("show");
 }
@@ -52,12 +53,6 @@ session_start();
 ?>
 
 <DIV class=topMenu>
-
-	<DIV id=logout>
-	<FORM METHOD=GET ACTION=logout.php>
-	<input type=submit value=logout name=logout>
-	</FORM>
-	</DIV>
 	
 	<div id="searching">
   <select id="searchOptions"
@@ -108,7 +103,7 @@ session_start();
 			<li><a href="http://weblab.salemstate.edu/~csforum/Forum/createForum.html">Create Forum</a></li>
 			<li><a>Send Message</a></li>
 			<li><a>View Account</a></li>
-			<li><a>Logout</a></li>
+			<li><a href="./logout.php">Logout</a></li>
 		</ul>
 	</nav>
 	</DIV>
@@ -127,14 +122,33 @@ session_start();
 require_once "../database.php";
 
 if(isset($_SESSION['username']) != 0){
-echo "Youre logged in as ";
-echo $_SESSION['username'];
+//echo "Youre logged in as ";
+//echo $_SESSION['username'];
 }
 else{
-die("You're not Logged in");	
+header("Location: Home page.php"); //redirect not working
+//die("You're not Logged in");	
 //echo "No username";
 }
 ?>
+	<DIV id=userMenu>
+	<?php //code that displays user menu needs to get user info from database so its put inside php tags
+	echo "<center>" . $_SESSION['username'] . "</center>";
+	
+	echo "<DIV id=userBio>";
+	//write sql query to get the users bio
+	//$user = array()
+	//$user[] = $_SESSION['username'];
+	//$query = mysqli_query($dbcon, "SELECT bio FROM Users WHERE username = $user[0]");
+	//$row = mysqli_fetch_array($query);
+	//$result = $row['bio'];
+	//echo "$result";
+	
+	echo "</DIV>";
+	?>
+	<button class=button id=bioButton>Edit Bio</button> <button class=button id=userForums>View Created Forums</button>
+	
+	</DIV>
 <DIV id=txtHint>
 </DIV>
 <SCRIPT>displayForums();//script that calls the function to display forums</SCRIPT>

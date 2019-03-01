@@ -2,10 +2,6 @@ body{
 	background-color: #ccffff;
 
 }
-table{
-}
-.button{
-}
 #searchOptions{
 	position:absolute;
 	top:0px;
@@ -31,6 +27,20 @@ table{
 	border: 10px solid transparent;
 	
 }
+#userMenu{
+	width: 250px;
+	height: 250px;
+	border: 1px solid;
+	float: left;
+}
+.button{
+	background-color:white;
+}
+#userBio{
+	height: 180px;
+	background-color: white;
+}
+
 #registerAndLogin{
 	float: left;
 	top: 0;
@@ -55,7 +65,7 @@ table{
 	height:21px\9;#height:18px;
 	border:1px solid #556;
 }
-#accountIcon{
+/* #accountIcon{ Icon replaced by navigation menu
 	width: 4px;
 	height: 4px;
 	float: right;
@@ -63,19 +73,22 @@ table{
 	top: 0;
 	right: 10;
 }
+*/
 #forumsContainer{
 	//border-style: solid;
 	border-bottom: 10%;
-	width: 80%;
-	margin: 0 auto;
+	width: 820px;
+	margin: 0px 0px 0px 300px;
+	background-color: #b3ffff;
 }
+
 #forumsContainer > div{
 	//border-style: solid;
 	border-bottom: 20%;
 	margin: 5px;
 	padding: 10px;
 }
-.accountIcon{
+/* .accountIcon{ Icon that lets down a dropdown menu not being used anymore, all of this css code is unnecessary
 	float: right;
 	top: 0;
 	right: 10%;
@@ -113,13 +126,13 @@ table{
 
 .dropdown a:hover {background-color: #ddd;}
 
-.show {display: inline;}
+.show {display: inline;} */
 
 .forums{
 	//border: 1px solid;
 	//border-color: black;
 	display: grid;
-	width: 60%;
+	width: 800px;
 	margin: 0 auto;
 	grid-template-columns: 250px 1fr;
 	grid-template-rows: 20px 60px;
@@ -131,7 +144,6 @@ table{
 .forums:hover{
 	background-color: #33bbff;
 }
-
 .creatorUsername{
 	border: 1px solid;
 	grid-column: 1;
@@ -153,14 +165,14 @@ table{
 	
 	
 }
- .testing{
+.innerSubjectAndTag{
 	height: 20px;
 	background-color: #cceeff;
 	//background: transparent; 
 	border: 2px solid #0099CC;
 	border-radius: 6px; 
  }
-.testing:hover {
+.innerSubjectAndTag:hover {
     background-color: #008CBA;
     color: white;
  }

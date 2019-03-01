@@ -23,8 +23,8 @@ $descriptionCol[] = $row['f_text'];
 
 }	//puts each row of the Forum table into a separate index in an array called $row
 
-if($num_rows > 5){ //sets the limit of the variable to 5 so that if there are 20 forums the website wont display all 20 and only shows up to the 5 most recent posts
-	$num_rows = 5;
+if($num_rows > 7){ //sets the limit of the variable to 5 so that if there are 20 forums the website wont display all 20 and only shows up to the 5 most recent posts
+	$num_rows = 7;
 }
 
 //*note* the $row variable is an array with ordered values by index representing f_title then f_text then s_title then tag
@@ -39,7 +39,7 @@ echo		"<DIV class=creatorUsername> $usernameCol[$i]";
 echo		"</DIV>	";
 echo		"<DIV class=forumTitle> Title: $titleCol[$i]";
 echo		"</DIV>";
-echo		"<DIV class=subjectAndTag><DIV class=testing> $subjectCol[$i] $tagCol[$i]";
+echo		"<DIV class=subjectAndTag><DIV class=innerSubjectAndTag> $subjectCol[$i] $tagCol[$i]";
 echo		"</DIV></DIV>";
 echo		"<DIV class=forumDescription> $descriptionCol[$i] ";
 echo		"</DIV>";

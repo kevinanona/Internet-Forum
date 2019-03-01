@@ -40,6 +40,14 @@ function accountInfo(){ //dropdown account options menu
 </HEAD>
 
 <BODY>
+<?php
+session_start();
+require_once "../database.php";
+// check if session exists?
+if(isset($_SESSION['username']) != 0){
+header("Location: Loggedin.php");
+}
+?>
 <DIV class=topMenu>
 
 	<DIV id=registerAndLogin>
@@ -112,12 +120,5 @@ function accountInfo(){ //dropdown account options menu
 <DIV id=txtHint>
 </DIV>
 <SCRIPT>displayForums();//script that calls the function to display forums</SCRIPT>
-
-<?php
-
-require_once "../database.php";
-
-?>
-
 </BODY>
 <HTML>
