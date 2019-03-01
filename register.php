@@ -9,12 +9,16 @@ if(isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['user
 echo "*B*";
 $firstname = $_POST['firstname'];
 $_firstname = dbescape($firstname);
+$_firtname = '' . $_firstname;
 $lastname = $_POST['lastname'];
 $_lastname = dbescape($lastname);
+$_lastname = ''. $_lastname;
 $username = $_POST['username'];
 $_username = dbescape($username);
+$_username = '' . $_username;
 $email = $_POST['email'];
 $_email = dbescape($email);
+$_email = ''. $_email;
 $password = $_POST['password'];
 $passhash = passhash($password); //dbescape the password for now, in the future change to hashing
 $date = date();
@@ -36,9 +40,9 @@ lastname = '$_lastname', email = '$_email', password = '$passhash'");
 	
 //$dbcon -> insert_id;
 //$userid =  $dbcon -> insert_id;
-$myEmail = "k_elloco@hotmail.com";
+//$_email = "k_elloco@hotmail.com"; was for testing purposes
 $theurl = "http://weblab.salemstate.edu/~csforum/Forum/verification.php?username=$_username";
-mail($myEmail, "Verification Link", $theurl);
+mail($_email, "Verification Link", $theurl);
 echo "Please check email for verification link <br>";
 echo "URL: http://weblab.salemstate.edu/~csforum/Forum/login.html";
 }
