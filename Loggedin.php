@@ -1,31 +1,8 @@
-
-
 <!DOCTYPE html>
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="stylesheet.css">
 <SCRIPT type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/F9A769DF-F758-B045-8B15-7B836D5190F2/main.js" charset="UTF-8"></SCRIPT>
-<SCRIPT type="text/javascript">
-
-//not being used anymore, used to be for the dropdown menu which im not using anymore
-function myFunction() {
-  document.getElementById("myDropdown").classList.toggle("show");
-}
-
-// Close the dropdown if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.accountIcon')) {
-    var dropdowns = document.getElementsByClassName("accountContent");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
-  }
-}
-</SCRIPT>
 <script> //testing this script, its supposed to access php file to get forums from database and display it on the page
           function displayForums() {
             if (window.XMLHttpRequest) {
@@ -47,7 +24,6 @@ window.onclick = function(event) {
 </script>
 </head>
 <BODY>
-
 <?php
 session_start();
 ?>
@@ -119,7 +95,7 @@ session_start();
 	
 </DIV>
 <?php
-require_once "../database.php";
+//require_once "../database.php";
 
 if(isset($_SESSION['username']) != 0){
 //echo "Youre logged in as ";
@@ -133,25 +109,35 @@ header("Location: Home page.php"); //redirect not working
 ?>
 	<DIV id=userMenu>
 	<?php //code that displays user menu needs to get user info from database so its put inside php tags
+	require_once "../database.php";
 	echo "<center>" . $_SESSION['username'] . "</center>";
 	
-	echo "<DIV id=userBio>";
+	echo "<DIV contenteditable=false id=userBio>";
 	//write sql query to get the users bio
-	//$user = array()
-	//$user[] = $_SESSION['username'];
-	//$query = mysqli_query($dbcon, "SELECT bio FROM Users WHERE username = $user[0]");
-	//$row = mysqli_fetch_array($query);
-	//$result = $row['bio'];
-	//echo "$result";
+	$user = $_SESSION['username'];
+	$query = mysqli_query($dbcon, "SELECT bio FROM Users WHERE username = '$user'");
+	$row = mysqli_fetch_array($query);
+	$result = $row['bio'];
+	echo "<center>" . $result . "<center>"; //displays the users bio
 	
 	echo "</DIV>";
 	?>
-	<button class=button id=bioButton>Edit Bio</button> <button class=button id=userForums>View Created Forums</button>
+	<button class=button id=bioButton onclick="editBio()">Edit Bio</button> <button class=button id=userForums>View Created Forums</button>
 	
 	</DIV>
 <DIV id=txtHint>
 </DIV>
 <SCRIPT>displayForums();//script that calls the function to display forums</SCRIPT>
-
+<SCRIPT>
+function editBio(){
+	if(document.getElementById("userBio").contentEditable == "false"){
+	document.getElementById("userBio").contentEditable = "true"; //Lets the user edit their bio straight on the div in which it exists
+	}
+	else{
+	document.getElementById("userBio").contentEditable = "false";
+	
+	}
+}
+</SCRIPT>
 </BODY>
 <HTML>
