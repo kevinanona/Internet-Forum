@@ -77,8 +77,7 @@ session_start();
 	<nav class=nav>
 		<ul>
 			<li><a href="http://weblab.salemstate.edu/~csforum/Forum/createForum.html">Create Forum</a></li>
-			<li><a>Send Message</a></li>
-			<li><a>View Account</a></li>
+			<li><a href="./messages.php">Send Message</a></li>
 			<li><a href="./logout.php">Logout</a></li>
 		</ul>
 	</nav>
