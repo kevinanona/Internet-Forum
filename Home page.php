@@ -101,9 +101,10 @@ header("Location: Loggedin.php");
 	<DIV style="float: right; top: 0; right: 0;">
 	<nav class=nav>
 		<ul>
-			<li><a href="http://weblab.salemstate.edu/~csforum/Forum/createForum.html">Create Forum</a></li>
-			<li><a>Send Message</a></li>
-			<li><a>View Account</a></li>
+			<!--<li><a href="http://weblab.salemstate.edu/~csforum/Forum/createForum.html">Create Forum</a></li> dont need this code because
+			since the user isnt logged in, they should not be taken to the forum creation screen as they need to be logged in to do so-->
+			<li><a onclick="createForum()">Create Forum</a></li> <!-- does not link to the createForum.html file because the user is not logged in-->
+			<li><a onclick="sendMessage()">Send Message</a></li> <!-- does not link to the message.html file because the user is not logged in-->
 		</ul>
 	</nav>
 	</DIV>
@@ -120,5 +121,13 @@ header("Location: Loggedin.php");
 <DIV id=txtHint>
 </DIV>
 <SCRIPT>displayForums();//script that calls the function to display forums</SCRIPT>
+<SCRIPT>
+function sendMessage(){ //user is not logged in therefore it displays a message
+	alert("You need to be logged in to send a message");
+}
+function createForum(){ //user is not logged in therefore it displays a message
+	alert("You need to be logged in to create a forum");
+}
+</SCRIPT>
 </BODY>
 <HTML>
