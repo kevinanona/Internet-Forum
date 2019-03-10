@@ -6,14 +6,14 @@
 </HEAD>
 <BODY>
 <DIV class=register>
-	<FORM METHOD=POST NAME="Register" ACTION="register.php"><TABLE align=center>
+	<FORM id="myForm" METHOD=POST NAME="Register" ACTION="register.php"><TABLE align=center>
 	<H2><center>Register</center></H2>
-		<TR><TD>First Name</TD><TD><INPUT type=text name=firstname></TD></TR>
-		<TR><TD>Last Name</TD><TD><INPUT type=text name=lastname></TD></TR>
-		<TR><TD>Username</TD><TD><INPUT type=text name=username></TD></TR>
-		<TR><TD>Email</TD><TD><INPUT type=text name=email></TD></TR>
-		<TR><TD>Password</TD><TD><INPUT type=text name=password></TD></TR>
-		<TR><TD></TD><TD><INPUT type=submit name=submit value="Submit"></TD></TR>
+		<TR><TD>First Name</TD><TD><INPUT id=firstname type=text name=firstname required></TD></TR>
+		<TR><TD>Last Name</TD><TD><INPUT id=lastname type=text name=lastname required></TD></TR>
+		<TR><TD>Username</TD><TD><INPUT id=username type=text name=username required></TD></TR>
+		<TR><TD>Email</TD><TD><INPUT id=email type=email name=email required></TD></TR>
+		<TR><TD>Password</TD><TD><INPUT id=password type=text name=password required></TD></TR>
+		<TR><TD></TD><TD><INPUT id=submit type=submit name=submit value="Submit"></TD></TR>
 	</TABLE></FORM>
 </DIV>
 </BODY>
