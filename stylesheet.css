@@ -2,20 +2,29 @@ body{
 	background-color: #ccffff;
 
 }
+h5 {
+	text-align: left;
+	top: 0;
+	padding: 0;
+	margin: 0;
+}
+h2 {
+	text-align: center;
+}
 #searchOptions{
-	top:0px;
-	left:0px;
-	width:200px; 
+	width:200px;
 	height:27px;
 	line-height:20px;
 	margin:0;
 	padding:0;
 }
 .topMenu{
+	width: 100%;
+	height: 50px;
+	background-color: #8eddff;
 	position: relative;
 	text-align: center;
 	border: 10px solid transparent;
-	margin-top: 40px;
 	margin-bottom: 40px;
 	
 
@@ -47,9 +56,7 @@ body{
 	border: transparent;
 }
 #registerAndLogin{
-	float: left;
-	top: 0;
-	left: 0;
+	left: 30%;
 }
 #searching{
 	width:200px;
@@ -80,14 +87,13 @@ body{
 #forumsContainer{
 	//border-style: solid;
 	border-bottom: 10%;
-	width: 820px;
-	margin: 0px 0px 0px 300px;
+	width: 730px;
+	margin: 0 auto;
 	background-color: #b3ffff;
 }
 
 #forumsContainer > div{
 	//border-style: solid;
-	border-bottom: 20%;
 	margin: 5px;
 	padding: 10px;
 }
@@ -135,7 +141,7 @@ body{
 	//border: 1px solid;
 	//border-color: black;
 	display: grid;
-	width: 800px;
+	width: 700px;
 	margin: 0 auto;
 	grid-template-columns: 250px 1fr;
 	grid-template-rows: 20px 60px;
@@ -194,12 +200,12 @@ body{
 .nav a{
 	display: inline-block;
 	padding: .5em;
-	color: black;
+	color: white;
 	text-decoration: none;
-	background-color: white;
+	background-color: #8eddff;
 }
 .nav a:hover{
-	background-color: rgba(255, 255, 255, 0.3)
+	background-color: #33bbff;
 }
 
 
