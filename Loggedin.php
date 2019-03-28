@@ -29,7 +29,7 @@ session_start();
 ?>
 
 <DIV class=topMenu>
-	
+	<h5>Search a post</h5>
 	<div id="searching">
   <select id="searchOptions"
           onchange="document.getElementById('displayValue').value=this.options[this.selectedIndex].text; document.getElementById('idValue').value=this.options[this.selectedIndex].value;">
@@ -109,7 +109,7 @@ header("Location: Home page.php"); //redirect not working
 	<DIV id=userMenu>
 	<?php //code that displays user menu needs to get user info from database so its put inside php tags
 	require_once "../database.php";
-	echo "<center>" . $_SESSION['username'] . "</center>";
+	echo "<div style=\"text-align: center;\">" . $_SESSION['username'] . "</div>";
 	
 	echo "<DIV contenteditable=false id=userBio>";
 	//write sql query to get the users bio
@@ -117,16 +117,19 @@ header("Location: Home page.php"); //redirect not working
 	$query = mysqli_query($dbcon, "SELECT bio FROM Users WHERE username = '$user'");
 	$row = mysqli_fetch_array($query);
 	$result = $row['bio'];
-	echo "<center>" . $result . "<center>"; //displays the users bio
+	echo "<div style=\"text-align: center;\">" . $result . "</div>"; //displays the users bio
 	
 	echo "</DIV>";
 	?>
 	<button class=button id=bioButton onclick="editBio()">Edit Bio</button> <button class=button id=userForums>View Created Forums</button>
 	
 	</DIV>
-<DIV id=txtHint>
+<DIV style="float: left;" id=txtHint>
 </DIV>
-<SCRIPT>displayForums();//script that calls the function to display forums</SCRIPT>
+<?php
+include "displayForums.php"; //realized I could include the code from displayForums.php instead of having to call the file by using AJAX
+?>
+<SCRIPT>//displayForums();//script that calls the function to display forums</SCRIPT>
 <SCRIPT>
 function editBio(){
 	if(document.getElementById("userBio").contentEditable == "false"){
