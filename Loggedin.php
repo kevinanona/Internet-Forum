@@ -27,7 +27,7 @@
 <?php
 session_start();
 ?>
-
+<!-- Top menu with the searching element as well as the forum creation, message sending and logout options -->
 <DIV class=topMenu>
 	<h5>Search a post</h5>
 	<div id="searching">
@@ -74,6 +74,7 @@ session_start();
 </div>
 	
 	<DIV style="float: right; top: 0; right: 0;">
+        <!-- Navigation bar with links to Forum creation, message sending and logout options -->
 	<nav class=nav>
 		<ul>
 			<li><a href="http://weblab.salemstate.edu/~csforum/Forum/createForum.html">Create Forum</a></li>
@@ -83,19 +84,10 @@ session_start();
 	</nav>
 	</DIV>
 	
-	<!--  
-	<div style="top:0;" class="dropdown">
-  <IMG style="width:25px;height:25px;float:right;"onclick="myFunction()" class="accountIcon" src="../account.png">
-  <div id="myDropdown" class="accountContent">
-    <a href="http://weblab.salemstate.edu/~csforum/Forum/createForum.html">Create a Forum</a>
-    <a href="#about">Send a message</a>
-  </div>
-	</div> -->
-	
 </DIV>
 <?php
 //require_once "../database.php";
-
+//if statement not working, header wont send location
 if(isset($_SESSION['username']) != 0){
 //echo "Youre logged in as ";
 //echo $_SESSION['username'];
@@ -112,7 +104,7 @@ header("Location: Home page.php"); //redirect not working
 	echo "<div style=\"text-align: center;\">" . $_SESSION['username'] . "</div>";
 	
 	echo "<DIV contenteditable=false id=userBio>";
-	//write sql query to get the users bio
+	//sql query to get the users bio, might scratch this feature
 	$user = $_SESSION['username'];
 	$query = mysqli_query($dbcon, "SELECT bio FROM Users WHERE username = '$user'");
 	$row = mysqli_fetch_array($query);
@@ -131,6 +123,7 @@ include "displayForums.php"; //realized I could include the code from displayFor
 ?>
 <SCRIPT>//displayForums();//script that calls the function to display forums</SCRIPT>
 <SCRIPT>
+    //Javascript function lets user edit their bio but it is not finished as the new bio is not saved in the database, might scratch feature
 function editBio(){
 	if(document.getElementById("userBio").contentEditable == "false"){
 	document.getElementById("userBio").contentEditable = "true"; //Lets the user edit their bio straight on the div in which it exists
