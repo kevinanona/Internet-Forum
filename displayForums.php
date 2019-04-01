@@ -1,6 +1,3 @@
-<!DOCTYPE HTML>
-<HTML><BODY>
-
 
 <?php
 require_once "../database.php";
@@ -17,24 +14,24 @@ $num_rows = mysqli_num_rows($query);
 
 while($row = mysqli_fetch_array($query)){
 $usernameCol[] = $row['creator_username'];
-$titleCol[] = $row['f_title'];
+$titleCol[] = '' . $row['f_title'];
 $subjectCol[] = $row['s_title'];
 $tagCol[] = $row['tag'];
 $descriptionCol[] = $row['f_text'];
 
 }	//puts each row of the Forum table into a separate index in an array called $row
 
-if($num_rows > 7){ //sets the limit of the variable to 5 so that if there are 20 forums the website wont display all 20 and only shows up to the 5 most recent posts
+if($num_rows > 7){ //sets the limit of the variable to 7 so that if there are more than 7 forums the website wont display all of them and only shows up to the 7 most recent posts
 	$num_rows = 7;
 }
 
 //*note* the $row variable is an array with ordered values by index representing f_title then f_text then s_title then tag
-echo "<DIV onclick=\"displayComments()\" id=forumsContainer>"; //DIV runs a js function to display comments
-
+echo "<DIV id=forumsContainer>";
 echo "<h2>Recent Forums</h2>";
 for($i = 0; $i< $num_rows; $i++){
-
-echo	"<DIV name=\"$titleCol[$i]\" class=forums>";
+    $nameOfForum = $titleCol[$i];
+echo	"<DIV id=\"$titleCol[$i]\" onclick=\"displayComment('' . $nameOfForum)\" class=forums>";
+//echo	"<DIV id=\"$titleCol[$i]\" class=forums>";
 
 
 echo		"<DIV class=creatorUsername> $usernameCol[$i]";
@@ -52,5 +49,17 @@ echo	"</DIV>";
 echo "</DIV>";
 
 ?>
+<div onclick="displayComment(23)" id="testing">s</div>
+<script>
+    function displayComment(str) {
+        //str = name.toString();
+        document.getElementById("testing").innerHTML = str;
 
-</BODY></HTML>
+    }
+
+//   document.getElementById("kevin").onclick = function() {
+//       string = document.getElementById("kevin").value;
+//       document.getElementById("testing").innerHTML = string;
+//   }
+
+</script>
