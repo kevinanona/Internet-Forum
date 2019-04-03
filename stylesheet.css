@@ -1,5 +1,6 @@
 body{
-	background-color: #ccffff;
+	background-color: #4e99ff;
+	margin: 0;
 
 }
 h5 {
@@ -7,6 +8,7 @@ h5 {
 	top: 0;
 	padding: 0;
 	margin: 0;
+	color: white;
 }
 h2 {
 	text-align: center;
@@ -21,7 +23,7 @@ h2 {
 .topMenu{
 	width: 100%;
 	height: 50px;
-	background-color: #8eddff;
+	background-color: #0000bf;
 	position: relative;
 	text-align: center;
 	border: 10px solid transparent;
@@ -45,6 +47,7 @@ h2 {
 	height: 180px;
 	//background-color: #f2f2f2;
 	margin: 25px;
+	padding: 10px;
 	background-color: #cceeff;
 	//background: transparent; 
 	border: 2px solid #0099CC;
@@ -89,7 +92,7 @@ h2 {
 	border-bottom: 10%;
 	width: 730px;
 	margin: 0 auto;
-	background-color: #b3ffff;
+	//background-color: #b3ffff;
 }
 
 #forumsContainer > div{
@@ -152,6 +155,7 @@ h2 {
 
 .forums:hover{
 	background-color: #33bbff;
+	cursor: pointer;
 }
 .creatorUsername{
 	border: 1px solid;
@@ -176,6 +180,7 @@ h2 {
 }
 .innerSubjectAndTag{
 	height: 20px;
+	width: 200px;
 	background-color: #cceeff;
 	//background: transparent; 
 	border: 2px solid #0099CC;
@@ -207,28 +212,3 @@ h2 {
 .nav a:hover{
 	background-color: #33bbff;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
