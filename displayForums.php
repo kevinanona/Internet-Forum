@@ -2,9 +2,13 @@
 <?php
 require_once "../database.php";
 
-$sql = "
-SELECT creator_username, f_title, f_text, s_title, tag FROM Forum, Subject WHERE Forum.forum_subject_id = Subject.s_id ORDER BY f_timestamp DESC";
+$sql = '
+SELECT f_id, creator_username, f_title, f_text, s_title, tag 
+FROM Forum, Subject 
+WHERE Forum.forum_subject_id = Subject.s_id 
+ORDER BY f_timestamp DESC';
 $query = mysqli_query($dbcon , $sql);
+$f_id = array();
 $usernameCol = array();
 $titleCol = array();
 $subjectCol = array();
@@ -13,11 +17,12 @@ $descriptionCol = array();
 $num_rows = mysqli_num_rows($query);
 
 while($row = mysqli_fetch_array($query)){
-$usernameCol[] = $row['creator_username'];
-$titleCol[] = '' . $row['f_title'];
-$subjectCol[] = $row['s_title'];
-$tagCol[] = $row['tag'];
-$descriptionCol[] = $row['f_text'];
+    $f_id[] = $row['f_id'];
+    $usernameCol[] = $row['creator_username'];
+    $titleCol[] = '' . $row['f_title'];
+    $subjectCol[] = $row['s_title'];
+    $tagCol[] = $row['tag'];
+    $descriptionCol[] = $row['f_text'];
 
 }	//puts each row of the Forum table into a separate index in an array called $row
 
@@ -34,19 +39,22 @@ echo	"<DIV id=\"$titleCol[$i]\" onclick=\"displayComment('' . $nameOfForum)\" cl
 //echo	"<DIV id=\"$titleCol[$i]\" class=forums>";
 
 
-echo		"<DIV class=creatorUsername> $usernameCol[$i]";
-echo		"</DIV>	";
-echo		"<DIV class=forumTitle> Title: $titleCol[$i]";
-echo		"</DIV>";
-echo		"<DIV class=subjectAndTag><DIV class=innerSubjectAndTag> $subjectCol[$i] $tagCol[$i]";
-echo		"</DIV></DIV>";
-echo		"<DIV class=forumDescription> $descriptionCol[$i] ";
-echo		"</DIV>";
+echo		"<DIV class=creatorUsername> $usernameCol[$i]</DIV>	";
+echo		"<DIV class=forumTitle> Title: $titleCol[$i]</DIV>";
+echo		"<DIV class=subjectAndTag><DIV class=innerSubjectAndTag> $subjectCol[$i] $tagCol[$i]</DIV></DIV>";
+echo		"<DIV class=forumDescription> $descriptionCol[$i]"; ?>
+    <FORM METHOD="GET" ACTION="comment.php">
+        <input type="submit" value=<?php echo "\"$f_id[$i]\""; ?> name="forumID">
+    </FORM>
 
+<?php
+echo "</DIV>"; //this DIV closes the forumDescription DIV
 echo	"</DIV>";
+
+//print_r($usernameCol); testing
 }
 
-echo "</DIV>";
+echo "</DIV>"; //closes forumsContainer
 
 ?>
 <div onclick="displayComment(23)" id="testing">s</div>
