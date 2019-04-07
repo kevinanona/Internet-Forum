@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>Internet Forum</title>
     <!-- THIS PAGE IS TO BE INCLUDED INTO EVERY FILE THE USER IS GOING TO BE LOGGED IN FOR -->
     <link rel="stylesheet" type="text/css" href="stylesheet.css">
     <SCRIPT type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/F9A769DF-F758-B045-8B15-7B836D5190F2/main.js" charset="UTF-8"></SCRIPT>
@@ -78,9 +79,10 @@ session_start();
         <!-- Navigation bar with links to Forum creation, message sending and logout options -->
         <nav class=nav>
             <ul>
+                <li><a href="./Home%20page.php">Home Page</a></li>
                 <li><a href="http://weblab.salemstate.edu/~csforum/Forum/createForum.html">Create Forum</a></li>
                 <li><a href="./messages.php">Send Message</a></li>
-                <li><a href="./logout.php">Logout</a></li>
+                <?php if(isset($_SESSION['username'])){ echo "<li><a href=\"./logout.php\">Logout</a></li>"; } ?>
             </ul>
         </nav>
     </DIV>
