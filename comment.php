@@ -13,7 +13,7 @@ if(isset($_GET['forumID'])){
     $f_id = $_GET['forumID']; //gets the value from the submitted form and sets it as f_id variable. Now I know the ID of the forum clicked and can use that info to display the forums comments
     ////query
     $sql = '
-    SELECT f_title, f_text, parent_comment_id, comment_forum_id, Comments.creator_username, comment_text, c_timestamp
+    SELECT f_title, f_text, Forum.creator_username AS forum_username, parent_comment_id, comment_forum_id, Comments.creator_username AS comment_username, comment_text, c_timestamp
     FROM Comments, Forum
     WHERE Forum.f_id = Comments.comment_forum_id AND comment_forum_id = ' . $f_id . ' ORDER BY c_timestamp';
 
@@ -24,21 +24,23 @@ if(isset($_GET['forumID'])){
     $commentText = array();
     $forumTitle = array();
     $forumText = array();
+    $forumCreator = array();
 
 //put values in an associative array
     while($row = mysqli_fetch_array($query)){
         //puts each column in an array
         $parentComment[] = $row['parent_comment_id'];
-        $commentCreator[] = $row['creator_username'];
+        $commentCreator[] = $row['comment_username'];
         $commentText[] = $row['comment_text'];
         $forumTitle[] = $row['f_title'];
         $forumText[] = $row['f_text'];
+        $forumCreator[] = $row['forum_username'];
     }
     ?>
 
     <div id="selectedForumInfo">
-        <div class="commentCreator">
-            <?php echo "$commentCreator[0]";?>
+        <div class="f_creator">
+            <?php echo "Creator: $forumCreator[0]";?>
         </div>
         <div class="f_title">
             <?php echo "$forumTitle[0]";?>
@@ -47,7 +49,24 @@ if(isset($_GET['forumID'])){
             <?php echo "$forumText[0]";?>
         </div>
     </div>
-<?php
+
+
+    <div class="newComment">
+        <form METHOD="POST" ACTION="comment.php?forumID=<?php echo "$f_id"; //this ACTION resends the forum ID parameter to the page so as to still display the forum being looked at?>">
+            <textarea placeholder="Contribute to the discussion.." name="comment" required></textarea>
+            <input type="submit">
+        </form>
+    </div>
+    <?php
+    if(isset($_POST['comment']) && isset($_SESSION['username'])){
+        $newComment = $_POST['comment'];
+        $username = $_SESSION['username'];
+        $sql = 'INSERT INTO Comments (comment_forum_id, creator_username, comment_text) VALUES (\'' . $f_id . '\',\'' . $username . '\',\'' . $newComment . '\')';
+        $query = mysqli_query($dbcon, $sql);
+    }
+    ?>
+
+    <?php
 
     //query successfully retrieves count based on forum ID
     $sql = 'SELECT COUNT(c_id) AS "Comment Count"
@@ -58,17 +77,21 @@ GROUP BY comment_forum_id';
     $query = mysqli_query($dbcon, $sql);
 
     $commentCount = mysqli_fetch_row($query);
-    echo "comment count is $commentCount[0]";
-    for($i = 0; $i < 1; $i++) {
+    echo "comment count is $commentCount[0]"; //used for testing
 
-    }
-
-?>
+    ?>
     <div class="commentContainer">
             <?php
-            for($i = 0; $i < $commentCount; $i++){ //this loop keeps creating DIV blocks for each comment?>
+            for($i = 0; $i < $commentCount[0]; $i++){ //this loop keeps creating DIV blocks for each comment?>
                 <div class="comment">
-                    <!-- TODO - WRITE ALL OF THE COMMENT INFO -->
+                    <div class="c_creator">
+                        <!-- Comment Creator -->
+                        <?php echo "Comment creator: $commentCreator[$i]"; ?>
+                    </div>
+                    <div class="c_text">
+                        <!-- Comment Text -->
+                        <?php echo "$commentText[$i]"; ?>
+                    </div>
                 </div>
             <?php } //this page block just to close the for loop ?>
     </div>
@@ -76,7 +99,7 @@ GROUP BY comment_forum_id';
 <?php
 } // closes the entire if
 else {
-    echo 'No variable'; //used for testing to see if the forum ID was sent
+    echo 'No forum found'; //used for testing to see if the forum ID was sent
 }
 ?>
 </BODY></HTML>
