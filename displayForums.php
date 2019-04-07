@@ -57,17 +57,3 @@ echo	"</DIV>";
 echo "</DIV>"; //closes forumsContainer
 
 ?>
-<div onclick="displayComment(23)" id="testing">s</div>
-<script>
-    function displayComment(str) {
-        //str = name.toString();
-        document.getElementById("testing").innerHTML = str;
-
-    }
-
-//   document.getElementById("kevin").onclick = function() {
-//       string = document.getElementById("kevin").value;
-//       document.getElementById("testing").innerHTML = string;
-//   }
-
-</script>
