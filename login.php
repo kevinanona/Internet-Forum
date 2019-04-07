@@ -24,9 +24,9 @@ $checksvalidation = dbquery("SELECT verified FROM Users WHERE username = '$_user
 $num_rows1 = mysqli_num_rows($checkUsernameExists);
 $num_rows2 = mysqli_num_rows($checksvalidation);
 
-if(!$num_rows1){
-	echo "*B*";
-	die("Username not found");
+if(!$num_rows1 || $_username == " "){
+	//echo "*B*";
+	die(header("Location: http://weblab.salemstate.edu/~csforum/Forum/login.html?loginFailed=true&reason=username"));
 }
 	
 $result = mysqli_query($dbcon, "SELECT password FROM Users WHERE username = '$_username'");
@@ -38,7 +38,7 @@ $result = mysqli_query($dbcon, "SELECT password FROM Users WHERE username = '$_u
 		$passhash = $text;//passhash($password);
 		$passtest = passtest ($password, $passhash);
 		if(!$passtest){
-			die('Bad Password ' . mysqli_error());
+			die(header("Location: http://weblab.salemstate.edu/~csforum/Forum/login.html?loginFailed=true&reason=password"));
 		}
 	
 		//check for validation
