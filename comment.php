@@ -37,7 +37,6 @@ if(isset($_GET['forumID'])){
         $forumCreator[] = $row['forum_username'];
     }
     ?>
-
     <div id="selectedForumInfo">
         <div class="f_creator">
             <?php echo "Creator: $forumCreator[0]";?>
@@ -50,19 +49,26 @@ if(isset($_GET['forumID'])){
         </div>
     </div>
 
-
+    <!-- div for creating comments -->
     <div class="newComment">
         <form METHOD="POST" ACTION="comment.php?forumID=<?php echo "$f_id"; //this ACTION resends the forum ID parameter to the page so as to still display the forum being looked at?>">
-            <textarea placeholder="Contribute to the discussion.." name="comment" required></textarea>
-            <input type="submit">
+            <textarea placeholder="Contribute to the discussion.." id="comment" name="comment" required
+                <?php if(empty($_SESSION['username'])){echo "onclick=\"noComment()\"";}?>></textarea>
+            <input type="submit" id="submitComment">
         </form>
     </div>
     <?php
-    if(isset($_POST['comment']) && isset($_SESSION['username'])){
-        $newComment = $_POST['comment'];
-        $username = $_SESSION['username'];
-        $sql = 'INSERT INTO Comments (comment_forum_id, creator_username, comment_text) VALUES (\'' . $f_id . '\',\'' . $username . '\',\'' . $newComment . '\')';
-        $query = mysqli_query($dbcon, $sql);
+    //inserts the entered comment
+    if(isset($_POST['comment'])){
+        if(isset($_SESSION['username'])){
+            $newComment = $_POST['comment'];
+            $username = $_SESSION['username'];
+            $sql = 'INSERT INTO Comments (comment_forum_id, creator_username, comment_text) VALUES (\'' . $f_id . '\',\'' . $username . '\',\'' . $newComment . '\')';
+            $query = mysqli_query($dbcon, $sql);
+        }
+        else {
+            echo "<script>noComment()</script>";
+        }
     }
     ?>
 
@@ -77,7 +83,7 @@ GROUP BY comment_forum_id';
     $query = mysqli_query($dbcon, $sql);
 
     $commentCount = mysqli_fetch_row($query);
-    echo "comment count is $commentCount[0]"; //used for testing
+    //echo "comment count is $commentCount[0]"; //used for testing
 
     ?>
     <div class="commentContainer">
@@ -102,4 +108,10 @@ else {
     echo 'No forum found'; //used for testing to see if the forum ID was sent
 }
 ?>
+<script>
+    //function to run when unregistered user tries to comment
+    function noComment(){
+        alert("You need to be logged in to comment");
+    }
+</script>
 </BODY></HTML>
