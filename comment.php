@@ -12,13 +12,20 @@ require_once "../database.php";
 if(isset($_GET['forumID'])){
     $f_id = $_GET['forumID']; //gets the value from the submitted form and sets it as f_id variable. Now I know the ID of the forum clicked and can use that info to display the forums comments
     ////query
+    /// query to get forum and comment information
     $sql = '
     SELECT f_title, f_text, Forum.creator_username AS forum_username, parent_comment_id, comment_forum_id, Comments.creator_username AS comment_username, comment_text, c_timestamp
     FROM Comments, Forum
     WHERE Forum.f_id = Comments.comment_forum_id AND comment_forum_id = ' . $f_id . ' ORDER BY c_timestamp';
-
+    // query to get forum information in case comments dont exist for the chosen forum
+    $sql2 = '
+    SELECT f_title, f_text, Forum.creator_username AS forum_username
+    FROM Forum
+    WHERE ' . $f_id;
     //run query
     $query = mysqli_query($dbcon, $sql);
+    $query2 = mysqli_query($dbcon, $sql2);
+
     $parentComment = array();
     $commentCreator = array();
     $commentText = array();
@@ -26,15 +33,19 @@ if(isset($_GET['forumID'])){
     $forumText = array();
     $forumCreator = array();
 
-//put values in an associative array
+//Retrieves comment information
     while($row = mysqli_fetch_array($query)){
         //puts each column in an array
         $parentComment[] = $row['parent_comment_id'];
         $commentCreator[] = $row['comment_username'];
         $commentText[] = $row['comment_text'];
-        $forumTitle[] = $row['f_title'];
-        $forumText[] = $row['f_text'];
-        $forumCreator[] = $row['forum_username'];
+    }
+    //Retrieves just forum information in case comments dont exist for the chosen forum
+    while($row2 = mysqli_fetch_array($query2)){
+        //puts each column in an array
+        $forumTitle[] = $row2['f_title'];
+        $forumText[] = $row2['f_text'];
+        $forumCreator[] = $row2['forum_username'];
     }
     ?>
     <div id="selectedForumInfo">
