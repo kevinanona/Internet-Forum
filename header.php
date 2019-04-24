@@ -34,7 +34,7 @@ session_start();
     <h5>Search a post</h5>
     <div id="searching">
         <select id="searchOptions"
-                onchange="document.getElementById('displayValue').value=this.options[this.selectedIndex].text; document.getElementById('idValue').value=this.options[this.selectedIndex].value;">
+                <!-- onchange="document.getElementById('displayValue').value=this.options[this.selectedIndex].text; document.getElementById('idValue').value=this.options[this.selectedIndex].value;"--> >
             <option value="CSC 105">CSC 105</option>
             <option value="CSC 110">CSC 110</option>
             <option value="CSC 115">CSC 115</option>
@@ -70,9 +70,11 @@ session_start();
             <option value="MAT214A">MAT214A</option>
             <option value="PHS 205">PHS 205</option>
         </select>
-        <input class=searchField type="text" name="displayValue" id="displayValue"
-               placeholder="Enter forum subject/tag" onfocus="this.select()">
-        <input name="idValue" id="idValue" type="hidden">
+        <form METHOD="get" ACTION="searchForum.php">
+            <input class=searchField type="text" name="subjectTitle" id="displayValue"
+                   placeholder="Enter forum subject/tag" onfocus="this.value = this.select()">
+            <input id="idValue" type="submit">
+        </form>
     </div>
 
     <DIV style="float: right; top: 0; right: 0;">
