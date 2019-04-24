@@ -93,9 +93,11 @@ header("Location: Loggedin.php");
 	<option value="MAT214A">MAT214A</option>
 	<option value="PHS 205">PHS 205</option>
   </select>
-  <input class=searchField type="text" name="displayValue" id="displayValue" 
-         placeholder="Enter forum subject/tag" onfocus="this.select()">
-  <input name="idValue" id="idValue" type="hidden">
+            <form METHOD="get" ACTION="searchForum.php">
+                <input class=searchField type="text" name="subjectTitle" id="displayValue"
+                       placeholder="Enter forum subject/tag" onfocus="this.value = this.select()">
+                <input id="idValue" type="submit">
+            </form>
 </div>
 	
 	<DIV style="float: right; top: 0; right: 0;">
