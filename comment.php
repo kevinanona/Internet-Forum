@@ -21,7 +21,7 @@ if(isset($_GET['forumID'])){
     $sql2 = '
     SELECT f_title, f_text, Forum.creator_username AS forum_username
     FROM Forum
-    WHERE ' . $f_id;
+    WHERE f_id = ' . $f_id;
     //run query
     $query = mysqli_query($dbcon, $sql);
     $query2 = mysqli_query($dbcon, $sql2);
@@ -50,7 +50,7 @@ if(isset($_GET['forumID'])){
     ?>
     <div id="selectedForumInfo">
         <div class="f_creator">
-            <?php echo "Creator: $forumCreator[0]";?>
+            <?php echo "Creator: $forumCreator[0]"; //these indexes are 0 because the forum ID is used in the query and the ID is a unique key so only one row is returned?>
         </div>
         <div class="f_title">
             <?php echo "$forumTitle[0]";?>
