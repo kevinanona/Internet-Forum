@@ -1,6 +1,7 @@
 body{
 	background-color: #4e99ff;
 	margin: 0;
+	min-width: 1000px;
 
 }
 h5 {
