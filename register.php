@@ -41,6 +41,9 @@ $sql = 'SELECT * FROM Users WHERE username = "' . $_username . '"';
 $checkUsername = mysqli_query($dbcon, $sql);
 $num_rows1 = mysqli_num_rows($checkUsername);
 if($num_rows1 != 0){
+    ?>
+    <button style="margin: 0 auto;" onclick="redirectToRegister()">Register</button>
+    <?php
 	die("Username already exists");
 }
 //checks the email is unique
