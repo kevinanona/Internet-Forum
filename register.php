@@ -7,7 +7,7 @@
 		window.location.href = "http://weblab.salemstate.edu/~csforum/Forum/login.html";
 	}
 	function redirectToRegister(){
-		window.location.href = "http://weblab.salemstate.edu/~csforum/Forum/login.html";
+		window.location.href = "http://weblab.salemstate.edu/~csforum/Forum/register.html";
 	}
 </SCRIPT>
 <HEAD>
@@ -16,7 +16,6 @@
 
 
 <?php
-//make it so that emails have to have the right syntax
 
 require_once "../database.php"; //connects to the database
 if(isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['username']) && isset($_POST['email']) && isset($_POST['password'])){
@@ -34,18 +33,25 @@ $email = $_POST['email'];
 $_email = dbescape($email);
 $_email = ''. $_email;
 $password = $_POST['password'];
-$passhash = passhash($password); //dbescape the password for now, in the future change to hashing
+$passhash = passhash($password);
 $date = date();
 
 //checks the username is unique
-$checkUsername = dbquery("SELECT * FROM Users WHERE 'username' = '$_username'");
-if($checkUsername->num_rows != 0){
+$sql = 'SELECT * FROM Users WHERE username = "' . $_username . '"';
+$checkUsername = mysqli_query($dbcon, $sql);
+$num_rows1 = mysqli_num_rows($checkUsername);
+if($num_rows1 != 0){
 	die("Username already exists");
 }
 //checks the email is unique
-$checkEmail = dbquery("SELECT * FROM Users WHERE 'email' = '$_email'");
-if($checkEmail->num_rows != 0){
-	die("There is already an account with this email");
+$sql2 = 'SELECT * FROM Users WHERE email = "' . $_email . '"';
+$checkEmail = mysqli_query($dbcon, $sql2);
+$num_rows2 = mysqli_num_rows($checkEmail);
+if($num_rows2 != 0){
+    ?>
+<button style="margin: 0 auto;" onclick="redirectToRegister()">Register</button>
+<?php
+	die("Email already exists");
 }
 
 
