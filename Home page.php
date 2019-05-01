@@ -4,6 +4,7 @@
 <link rel="stylesheet" type="text/css" href="stylesheet.css">
 <SCRIPT type="text/javascript"src="https://gc.kis.v2.scr.kaspersky-labs.com/F9A769DF-F758-B045-8B15-7B836D5190F2/main.js" charset="UTF-8"></script>
 <SCRIPT>
+    /** These functions arent being used anymore
 function signup(){
 document.getElementById("signup").src = "/register.html";
 window.location.href = "../register.html";
@@ -16,6 +17,7 @@ document.getElementById("dropdown").classList.toggle("show");
 }
 function accountInfo(){ //dropdown account options menu
 }
+    */
 
 </SCRIPT>
 <script> //testing this script, its supposed to access php file to get forums from database and display it on the page
@@ -51,7 +53,7 @@ header("Location: Loggedin.php");
 <DIV class=topMenu>
 
 	<DIV id=registerAndLogin>
-	<button class=button onclick="window.location.href='../Forum/register.html'">Sign Up</button>
+	<button class=button onclick="window.location.href='register.php'">Sign Up</button>
 	<button class=button onclick="window.location.href='../Forum/login.html'">Log in</button>
 	</DIV>
 	
@@ -106,7 +108,7 @@ header("Location: Loggedin.php");
 			<!--<li><a href="http://weblab.salemstate.edu/~csforum/Forum/createForum.html">Create Forum</a></li> dont need this code because
 			since the user isnt logged in, they should not be taken to the forum creation screen as they need to be logged in to do so-->
 			<li><a onclick="createForum()">Create Forum</a></li> <!-- does not link to the createForum.html file because the user is not logged in-->
-			<li><a onclick="sendMessage()">Send Message</a></li> <!-- does not link to the message.html file because the user is not logged in-->
+			<!-- Messages not fully implemented so option was commented out <li><a onclick="sendMessage()">Send Message</a></li> does not link to the message.html file because the user is not logged in-->
 		</ul>
 	</nav>
 	</DIV>

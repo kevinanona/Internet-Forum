@@ -33,7 +33,8 @@ session_start();
 <DIV class=topMenu>
     <h5>Search a post</h5>
     <div id="searching">
-        <select id="searchOptions"
+        <form METHOD="get" ACTION="searchForum.php">
+        <select id="searchOptions" name="subjectTitle"
                 <!-- onchange="document.getElementById('displayValue').value=this.options[this.selectedIndex].text; document.getElementById('idValue').value=this.options[this.selectedIndex].value;"--> >
             <option value="CSC 105">CSC 105</option>
             <option value="CSC 110">CSC 110</option>
@@ -70,10 +71,9 @@ session_start();
             <option value="MAT214A">MAT214A</option>
             <option value="PHS 205">PHS 205</option>
         </select>
-        <form METHOD="get" ACTION="searchForum.php">
-            <input class=searchField type="text" name="subjectTitle" id="displayValue"
-                   placeholder="Enter forum subject/tag" onfocus="this.value = this.select()">
-            <input id="idValue" type="submit">
+            <input class=searchField type="text" id="displayValue"
+                   placeholder="Enter forum subject">
+            <input type="submit" value="Search">
         </form>
     </div>
 
@@ -83,7 +83,7 @@ session_start();
             <ul>
                 <li><a href="./Home%20page.php">Home Page</a></li>
                 <li><a href="http://weblab.salemstate.edu/~csforum/Forum/createForum.html">Create Forum</a></li>
-                <li><a href="./messages.php">Send Message</a></li>
+               <!--  <li><a href="./messages.php">Send Message</a></li> The message sending class is not fully functional -->
                 <?php if(isset($_SESSION['username'])){ echo "<li><a href=\"./logout.php\">Logout</a></li>"; } ?>
             </ul>
         </nav>
