@@ -67,8 +67,10 @@ lastname = '$_lastname', email = '$_email', password = '$passhash'");
 //$_email = "k_elloco@hotmail.com"; was for testing purposes
 $theurl = "http://weblab.salemstate.edu/~csforum/Forum/verification.php?username=$_username";
 mail($_email, "Verification Link", $theurl);
+echo "<DIV style='margin: auto'>";
 echo "Please check email for verification link <br>";
-echo "URL: http://weblab.salemstate.edu/~csforum/Forum/login.html";
+echo "<a href='http://weblab.salemstate.edu/~csforum/Forum/login.html'>Go to login</a>";
+echo "</DIV>";
 }
 else{
 	echo "Invalid Information"; //code shouldnt get to this else statement because javascript already checks that the user has inputed values in each textbox

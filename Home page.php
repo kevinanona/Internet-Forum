@@ -53,7 +53,7 @@ header("Location: Loggedin.php");
 <DIV class=topMenu>
 
 	<DIV id=registerAndLogin>
-	<button class=button onclick="window.location.href='register.php'">Sign Up</button>
+	<button class=button onclick="window.location.href='register.html'">Sign Up</button>
 	<button class=button onclick="window.location.href='../Forum/login.html'">Log in</button>
 	</DIV>
 	
