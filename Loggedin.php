@@ -14,9 +14,11 @@ header("Location: Home page.php"); //redirect not working
 ?>
 
 <?php
+// Following code was commented
+
 /**  This PHP tag was created to put all of this code in a comment
  * This code pertains to a feature that was scratched due to time constraints
- *
+ * 
 	<DIV id=userMenu>
 	<?php //code that displays user menu needs to get user info from database so its put inside php tags
 	require_once "../database.php";

@@ -26,6 +26,7 @@ if(isset($_GET['forumID'])){
     $query = mysqli_query($dbcon, $sql);
     $query2 = mysqli_query($dbcon, $sql2);
 
+    // Array that will hold each of the columns from the query result
     $parentComment = array();
     $commentCreator = array();
     $commentText = array();

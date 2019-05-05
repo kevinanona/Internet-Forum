@@ -21,6 +21,7 @@ function accountInfo(){ //dropdown account options menu
 
 </SCRIPT>
 <script> //testing this script, its supposed to access php file to get forums from database and display it on the page
+        // Could use include "displayForums.php" instead of having to use AJAX but AJAX was used here instead for learning purposes
           function displayForums() {
             if (window.XMLHttpRequest) {
                 // code for IE7+, Firefox, Chrome, Opera, Safari
@@ -113,20 +114,12 @@ header("Location: Loggedin.php");
 	</nav>
 	</DIV>
 	
-	<!--
-	<DIV class=accountIcon>
-	<IMG style="width: 30px;height: 30px;" onmousedown=accountInfo() class=accountIcon src="../account.png">
-	</DIV>
-	-->
-	
-	
-	
 </DIV>
 <DIV id=txtHint>
 </DIV>
 <SCRIPT>displayForums();//script that calls the function to display forums</SCRIPT>
 <SCRIPT>
-function sendMessage(){ //user is not logged in therefore it displays a message
+function sendMessage(){ //user is not logged in therefore it displays a message // Message feature was commented out because it was fully implemented, user has no way of viewing their inbox
 	alert("You need to be logged in to send a message");
 }
 function createForum(){ //user is not logged in therefore it displays a message

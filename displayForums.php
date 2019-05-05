@@ -8,6 +8,7 @@ FROM Forum, Subject
 WHERE Forum.forum_subject_id = Subject.s_id 
 ORDER BY f_timestamp DESC';
 $query = mysqli_query($dbcon , $sql);
+// All of these array are to hold each of the query result columns
 $f_id = array();
 $usernameCol = array();
 $titleCol = array();
@@ -16,6 +17,7 @@ $tagCol = array();
 $descriptionCol = array();
 $num_rows = mysqli_num_rows($query);
 
+//fill in the arrays with the query result columns
 while($row = mysqli_fetch_array($query)){
     $f_id[] = $row['f_id'];
     $usernameCol[] = $row['creator_username'];

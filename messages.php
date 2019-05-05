@@ -7,6 +7,9 @@ session_start();
 <link rel="stylesheet" type="text/css" href="stylesheet.css">
 </HEAD>
 <BODY>
+<?php
+include "header.php";
+?>
 <!-- Messages have a m_id, from_username, to_username, m_timestamp, m_text -->
 <FORM METHOD=POST ACTION="messages.php"><TABLE align=center>
 <TR><TD>Who is the recipient</TD><TD><input type=text name=receiver placeholder="Type the user's username" required></TD></TR>
@@ -15,7 +18,6 @@ session_start();
 </TABLE></FORM>
 
 <?php
-//NOTE ************************* THIS FILE HAS BEEN COMPLETED INCLUDING COMMENTS *******************************
 
 require_once "../database.php"; //connects to the database
 if(isset($_POST['receiver']) && isset($_POST['message'])){ //makes sure values were received for both receiver and message

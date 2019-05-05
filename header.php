@@ -5,24 +5,25 @@
     <!-- THIS PAGE IS TO BE INCLUDED INTO EVERY FILE THE USER IS GOING TO BE LOGGED IN FOR -->
     <link rel="stylesheet" type="text/css" href="stylesheet.css">
     <SCRIPT type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/F9A769DF-F758-B045-8B15-7B836D5190F2/main.js" charset="UTF-8"></SCRIPT>
+   <!-- Following script tag holds a function not being used anymore -->
     <script> //testing this script, its supposed to access php file to get forums from database and display it on the page
-        function displayForums() {
-            if (window.XMLHttpRequest) {
-                // code for IE7+, Firefox, Chrome, Opera, Safari
-                xmlhttp = new XMLHttpRequest();
-            } else {
-                // code for IE6, IE5
-                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-            }
-            xmlhttp.onreadystatechange = function() {
-                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                    document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
-                }
-            };
-            xmlhttp.open("GET","displayForums.php",true);
-            xmlhttp.send();
+    //   function displayForums() { //AJAX function not in use anymore
+    //       if (window.XMLHttpRequest) {
+    //           // code for IE7+, Firefox, Chrome, Opera, Safari
+    //           xmlhttp = new XMLHttpRequest();
+    //       } else {
+    //           // code for IE6, IE5
+    //           xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    //       }
+    //       xmlhttp.onreadystatechange = function() {
+    //           if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+    //               document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
+    //           }
+    //       };
+    //       xmlhttp.open("GET","displayForums.php",true);
+    //       xmlhttp.send();
 
-        }
+    //   }
     </script>
 </head>
 <BODY>

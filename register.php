@@ -13,8 +13,6 @@
 <HEAD>
 <BODY>
 
-
-
 <?php
 
 require_once "../database.php"; //connects to the database

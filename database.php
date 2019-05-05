@@ -1,4 +1,5 @@
 <?php
+// File that connects to the database
     $dbhost = "localhost";
     $dbuser = "csforum";
     $dbpass = "csforum18";
